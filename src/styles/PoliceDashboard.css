@@ -1,0 +1,384 @@
+/* =============================
+   Global Styles
+============================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e6f0ff, #ffffff);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* =============================
+   Dashboard Container
+============================= */
+.dashboard-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+}
+
+/* ✅ Tamil Nadu Police Logo Watermark in Background */
+.dashboard-container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 350px;
+    height: 350px;
+    background: url("https://upload.wikimedia.org/wikipedia/en/1/14/Tamil_Nadu_Police_Logo.png") no-repeat center;
+    background-size: contain;
+    opacity: 0.07;
+    /* light watermark */
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+/* ✅ Tamil Nadu Police Logo on Top-Left */
+.dashboard-container::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 70px;
+    height: 70px;
+    background: url("https://upload.wikimedia.org/wikipedia/en/1/14/Tamil_Nadu_Police_Logo.png") no-repeat center;
+    background-size: contain;
+    opacity: 0.95;
+}
+
+/* =============================
+   Title
+============================= */
+.dashboard-title {
+    text-align: center;
+    color: #002855;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.dashboard-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, #002855, #004aad, #0072cc);
+    border-radius: 3px;
+}
+
+/* =============================
+   Search Bar
+============================= */
+.search-bar {
+    display: flex;
+    margin-bottom: 30px;
+    border-radius: 50px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #cce0ff;
+    box-shadow: 0 6px 20px rgba(0, 51, 102, 0.1);
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 15px 25px;
+    border: none;
+    font-size: 1rem;
+    color: #003366;
+    outline: none;
+    background: transparent;
+}
+
+.search-bar input::placeholder {
+    color: #7a9bbc;
+}
+
+.search-bar button {
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #002855, #0072cc);
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+    background: linear-gradient(135deg, #0072cc, #002855);
+    transform: scale(1.05);
+}
+
+/* =============================
+   User Card
+============================= */
+.user-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 12px 30px rgba(0, 51, 102, 0.1);
+    border-left: 6px solid #0072cc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+}
+
+.user-avatar {
+    margin-bottom: 20px;
+    color: #0072cc;
+    background: rgba(0, 114, 204, 0.15);
+    border-radius: 50%;
+    padding: 12px;
+    font-size: 2rem;
+}
+
+.user-details {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.user-details h2 {
+    color: #002855;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.user-details p {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    background: rgba(0, 114, 204, 0.08);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    /* ✅ Fix text overflow */
+}
+
+.user-details b {
+    color: #002855;
+    min-width: 130px;
+    display: inline-block;
+}
+
+/* =============================
+   Buttons
+============================= */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0072cc, #002855);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #002855, #0072cc);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 51, 102, 0.25);
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: #0072cc;
+    border: 2px solid #0072cc;
+}
+
+.btn-secondary:hover {
+    background: #f0f7ff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 51, 102, 0.2);
+}
+
+/* =============================
+   Map Page
+============================= */
+/* =============================
+   Map Page
+============================= */
+.map-page {
+    padding: 20px;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #002855, #0072cc);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 51, 102, 0.25);
+}
+
+.map-header h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.map-container12 {
+    flex: 1;
+    height: calc(100vh - 150px); /* Ensure this is sufficient for your layout */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    position: relative; /* Ensure the map container has a positioning context */
+}
+
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+/* =============================
+   History Page
+============================= */
+.history-page {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.history-page h2 {
+    color: #002855;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.history-list {
+    margin-top: 30px;
+}
+
+.history-item {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 6px 18px rgba(0, 51, 102, 0.12);
+    border-left: 5px solid #0072cc;
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 51, 102, 0.18);
+}
+
+.history-item p {
+    margin-bottom: 8px;
+    color: #002855;
+}
+
+.history-item b {
+    color: #0072cc;
+}
+
+/* =============================
+   Responsive Design
+============================= */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 20px;
+        margin: 15px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+
+    .search-bar input {
+        border-radius: 15px 15px 0 0;
+    }
+
+    .search-bar button {
+        border-radius: 0 0 15px 15px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .map-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .user-details p {
+        flex-direction: column;
+    }
+
+    .user-details b {
+        margin-bottom: 5px;
+    }
+}
+
+/* =============================
+   Animations
+============================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-card,
+.history-item {
+    animation: fadeIn 0.6s ease;
+}

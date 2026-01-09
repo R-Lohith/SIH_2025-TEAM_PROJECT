@@ -1,0 +1,315 @@
+/* Wrapper */
+.map-view {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background: #f9fafb;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+}
+
+/* Profile Button */
+.profile-button {
+    position: fixed;
+    top: 16px;
+    right: 100px;
+    background: white;
+    color: #3b82f6;
+    border: none;
+    border-radius: 50%;
+    padding: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.profile-button:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: #3b82f6;
+    color: white;
+}
+
+/* Header */
+.map-header {
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.route-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.transport-display {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.transport-emoji {
+    font-size: 1.5rem;
+}
+
+.route-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.top-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.time-distance {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.transport-mode {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.location-info {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    align-items: center;
+}
+
+.location-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: flex-start;
+}
+
+.location-item .label {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.location-item .address {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.6rem;
+    font-weight: 600;
+    color: #facc15;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.weather-note {
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.5rem;
+    margin-left: 0.5rem;
+    color: #f0fdf4;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Map area */
+.map-area {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0.75rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Map + Heatmap containers */
+.map-container,
+.heatmap-container {
+    position: absolute;
+    overflow: hidden;
+}
+
+/* Full map */
+.map-container.full,
+.heatmap-container.full {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Thumbnail */
+.map-container.thumbnail,
+.heatmap-container.thumbnail {
+    top: 20px;
+    left: 20px;
+    height: 160px;
+    width: 240px;
+    z-index: 2;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Hover fix: only zoom iframe, container stays fixed --- */
+.map-container.thumbnail:hover,
+.heatmap-container.thumbnail:hover {
+    transform: none;
+}
+
+/* Leaflet map iframe simulation */
+.map-container.thumbnail .leaflet-container,
+.heatmap-container.thumbnail iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+    transform-origin: center center;
+    transition: transform 0.2s ease;
+}
+
+.map-container.thumbnail:hover .leaflet-container,
+.heatmap-container.thumbnail:hover iframe {
+    transform: scale(1.05);
+}
+
+
+
+
+/* Overlay for swap */
+.thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+}
+
+.thumbnail-overlay.active {
+    cursor: pointer;
+}
+
+.map-container.full .thumbnail-overlay,
+.heatmap-container.full .thumbnail-overlay {
+    pointer-events: none;
+}
+
+/* Simulate Connection Loss Button */
+.map-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 50;
+}
+
+.simulate-button {
+    padding: 10px 16px;
+    background: #ff9800;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s ease-in-out;
+}
+
+.simulate-button:hover {
+    background: #e68900;
+    transform: translateY(-2px);
+}
+
+/* Bottom controls */
+.bottom-controls {
+    padding: 1rem;
+    background: #fff;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.1);
+    z-index: 20;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.edit-button,
+.finish-button {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.edit-button {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.edit-button:hover {
+    background: #d1d5db;
+}
+
+.finish-button {
+    background: #ef4444;
+    color: #fff;
+}
+
+.finish-button.confirm {
+    background: #dc2626;
+}
+
+.finish-button:hover {
+    transform: translateY(-2px);
+}
+
+/* Map icons */
+.leaflet-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* Optional: fix leaflet attribution */
+.leaflet-control-attribution {
+    display: none;
+}

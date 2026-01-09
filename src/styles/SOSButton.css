@@ -1,0 +1,164 @@
+.sos-button {
+    position: fixed;
+    top: 5px;
+    right: 1rem;
+    background: #dc2626;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
+    z-index: 100;
+    transition: all 0.2s ease;
+    animation: sos-pulse 3s infinite;
+}
+
+.sos-button:hover {
+    background: #b91c1c;
+    transform: scale(1.1);
+    box-shadow: 0 20px 25px -5px rgba(220, 38, 38, 0.4);
+}
+
+.sos-button span {
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-top: 0.125rem;
+}
+
+@keyframes sos-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3), 0 0 0 8px rgba(220, 38, 38, 0.2);
+    }
+}
+
+/* SOS Popup */
+.sos-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.sos-popup {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    max-width: 22rem;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.sos-popup-icon {
+    color: #dc2626;
+    margin-bottom: 1rem;
+    animation: emergency-shake 0.5s infinite;
+}
+
+@keyframes emergency-shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-2px);
+    }
+
+    75% {
+        transform: translateX(2px);
+    }
+}
+
+.sos-popup h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.sos-popup p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.sos-popup-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.cancel-button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: #f3f4f6;
+    color: #374151;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.cancel-button:hover {
+    background: #e5e7eb;
+    border-color: #d1d5db;
+}
+
+.confirm-button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: #dc2626;
+    color: white;
+    border: 2px solid #dc2626;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.confirm-button:hover {
+    background: #b91c1c;
+    border-color: #b91c1c;
+    transform: translateY(-1px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .sos-button {
+        width: 3.5rem;
+        height: 3.5rem;
+        top: 0.95rem;
+        right: 0.75rem;
+    }
+
+    .sos-button span {
+        font-size: 0.625rem;
+    }
+
+    .sos-popup {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .sos-popup-buttons {
+        flex-direction: column;
+    }
+}
